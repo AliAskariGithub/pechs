@@ -1,337 +1,361 @@
+/**
+ * Single source of truth for The Academy PECHS website content.
+ *
+ * Accuracy rule (from the school details document): never invent school
+ * information. Anything not confirmed by the school is rendered with the
+ * TO_VERIFY marker instead of a fabricated value.
+ */
+
+export const TO_VERIFY = "TO VERIFY";
+
+export const verifyNote =
+  "This detail has not been confirmed by the school yet. Please share the official information and it will be published here.";
+
 export const school = {
-  name: "Career House Schooling System",
-  shortName: "CHSS",
-  tagline: "A co-educational community school in Landhi Town, Karachi",
-  address:
-    "Plot A1-66, Street No. 3, Zamanabad Housing Society, Sector 36-B, Landhi Town, Karachi, Sindh",
-  landmark: "Near Zamanabad, adjacent to main Landhi roads (Korangi District)",
-  phonePlaceholder: "+92 3XX XXX XXXX (to be confirmed)",
-  emailPlaceholder: "info@example.com (to be confirmed)",
-  timings: [
-    { label: "Pre-school (Montessori & KG)", value: "8:00 AM - 12:00 PM" },
-    { label: "Primary (Classes 1-5)", value: "8:00 AM - 1:30 PM" },
-    { label: "Middle (Classes 6-8)", value: "8:00 AM - 2:00 PM" },
-    { label: "Secondary (Classes 9-10)", value: "8:00 AM - 2:30 PM" },
-    { label: "Office hours", value: "Mon - Sat, 8:00 AM - 3:00 PM" },
-  ],
-  board: "Board of Secondary Education Karachi (BSEK)",
-  mapQuery: "Zamanabad Housing Society Sector 36-B Landhi Town Karachi",
+  name: "The Academy PECHS",
+  shortName: "The Academy",
+  location: "PECHS, Karachi, Sindh, Pakistan",
+  tagline: "Learn Today. Lead Tomorrow.",
+  intro:
+    "A strong academic foundation for confident, capable and responsible young individuals.",
+  segment: "O Level / A Level educational segment",
+  addressPlaceholder: `Exact street address — ${TO_VERIFY}`,
+  phonePlaceholder: `Phone number — ${TO_VERIFY}`,
+  whatsappPlaceholder: `WhatsApp number — ${TO_VERIFY}`,
+  emailPlaceholder: `Official email — ${TO_VERIFY}`,
+  admissionsEmailPlaceholder: `Admissions email — ${TO_VERIFY}`,
+  officeHoursPlaceholder: `Office hours — ${TO_VERIFY}`,
+  boardPlaceholder: `Examination board — ${TO_VERIFY}`,
+  foundedPlaceholder: `Year established — ${TO_VERIFY}`,
+  principalPlaceholder: `Principal / Head — ${TO_VERIFY}`,
+  mapQuery: "PECHS Karachi Sindh Pakistan",
 } as const;
 
-export const placeholderNote =
-  "Placeholder - please share the confirmed details so we can publish them.";
-
-export type ClassLevel = {
-  slug: string;
-  name: string;
-  stage: "Pre-School" | "Primary" | "Middle" | "Secondary";
-  ageRange: string;
-  timing: string;
-  summary: string;
-  subjects: string[];
-  outcomes: string[];
-  faculty: { role: string; subject: string; qualification: string }[];
-};
-
-const QUAL = "Qualification on file - profile to be confirmed by the school";
-
-const stageFor = (n: number): ClassLevel["stage"] =>
-  n <= 5 ? "Primary" : n <= 8 ? "Middle" : "Secondary";
-
-const timingFor = (stage: ClassLevel["stage"]) =>
-  stage === "Primary"
-    ? "8:00 AM - 1:30 PM"
-    : stage === "Middle"
-      ? "8:00 AM - 2:00 PM"
-      : "8:00 AM - 2:30 PM";
-
-const subjectsFor = (n: number): string[] => {
-  if (n <= 2)
-    return ["English", "Urdu", "Mathematics", "General Knowledge", "Islamiat", "Handwriting", "Drawing & Craft"];
-  if (n <= 5)
-    return ["English", "Urdu", "Mathematics", "General Science", "Social Studies", "Islamiat", "Computer Basics"];
-  if (n <= 8)
-    return ["English", "Urdu", "Mathematics", "General Science", "Pakistan Studies", "Islamiat", "Computer Studies"];
-  return [
-    "English",
-    "Urdu",
-    "Mathematics",
-    "Physics",
-    "Chemistry",
-    "Biology / Computer Science",
-    "Pakistan Studies",
-    "Islamiat",
-  ];
-};
-
-const outcomesFor = (n: number): string[] => {
-  if (n <= 2)
-    return [
-      "Confident reading, writing and speaking in English and Urdu",
-      "Number sense, basic operations and shape recognition",
-      "Classroom routines, sharing and self-care habits",
-    ];
-  if (n <= 5)
-    return [
-      "Comprehension and paragraph writing across both languages",
-      "Problem solving with fractions, measurement and data",
-      "Curiosity about science through simple experiments and projects",
-    ];
-  if (n <= 8)
-    return [
-      "Structured note-taking, revision and exam technique",
-      "Algebra, geometry and applied mathematics fluency",
-      "Lab-based science practice and solid computer literacy",
-    ];
-  return [
-    "Full preparation for the BSEK Matriculation (SSC) examinations",
-    "Practical work in physics, chemistry and biology laboratories",
-    "Study skills and career guidance for college admissions",
-  ];
-};
-
-const facultyFor = (n: number) => {
-  if (n <= 5)
-    return [
-      { role: "Class Teacher", subject: "English & General Knowledge", qualification: QUAL },
-      { role: "Subject Teacher", subject: "Mathematics & Science", qualification: QUAL },
-      { role: "Subject Teacher", subject: "Urdu & Islamiat", qualification: QUAL },
-    ];
-  if (n <= 8)
-    return [
-      { role: "Class Teacher", subject: "English", qualification: QUAL },
-      { role: "Subject Teacher", subject: "Mathematics", qualification: QUAL },
-      { role: "Subject Teacher", subject: "General Science", qualification: QUAL },
-      { role: "Subject Teacher", subject: "Computer Studies", qualification: QUAL },
-    ];
-  return [
-    { role: "Class Teacher", subject: "Mathematics", qualification: QUAL },
-    { role: "Subject Teacher", subject: "Physics", qualification: QUAL },
-    { role: "Subject Teacher", subject: "Chemistry", qualification: QUAL },
-    { role: "Subject Teacher", subject: "Biology / Computer Science", qualification: QUAL },
-  ];
-};
-
-export const classLevels: ClassLevel[] = [
-  {
-    slug: "montessori",
-    name: "Montessori",
-    stage: "Pre-School",
-    ageRange: "Ages 3-4",
-    timing: "8:00 AM - 12:00 PM",
-    summary:
-      "A gentle first step into school life, built around play, phonics and hands-on activity in a calm classroom.",
-    subjects: ["Phonics & Rhymes", "Urdu Sounds", "Numbers 1-50", "Colours & Shapes", "Art & Craft", "Story Time"],
-    outcomes: [
-      "Comfortable separation from parents and a settled classroom routine",
-      "Letter and number recognition through play",
-      "Fine motor skills, sharing and following simple instructions",
-    ],
-    faculty: [
-      { role: "Montessori Directress", subject: "Early Years", qualification: QUAL },
-      { role: "Assistant Teacher", subject: "Activity & Care", qualification: QUAL },
-    ],
-  },
-  {
-    slug: "kindergarten",
-    name: "Kindergarten",
-    stage: "Pre-School",
-    ageRange: "Ages 4-5",
-    timing: "8:00 AM - 12:00 PM",
-    summary:
-      "Reading, writing and early numeracy come together so children step into Class 1 ready and confident.",
-    subjects: ["English Reading & Writing", "Urdu Reading", "Mathematics", "General Knowledge", "Islamiat", "Drawing"],
-    outcomes: [
-      "Blending sounds into words and writing simple sentences",
-      "Counting, addition and subtraction within 100",
-      "Listening, speaking and classroom confidence",
-    ],
-    faculty: [
-      { role: "Class Teacher", subject: "English & Mathematics", qualification: QUAL },
-      { role: "Assistant Teacher", subject: "Urdu & Activity", qualification: QUAL },
-    ],
-  },
-  ...Array.from({ length: 10 }, (_, i) => {
-    const n = i + 1;
-    const stage = stageFor(n);
-    return {
-      slug: `class-${n}`,
-      name: `Class ${n}`,
-      stage,
-      ageRange: `Ages ${n + 4}-${n + 5}`,
-      timing: timingFor(stage),
-      summary:
-        stage === "Primary"
-          ? `Class ${n} builds strong literacy, numeracy and study habits with regular class tests and parent feedback.`
-          : stage === "Middle"
-            ? `Class ${n} moves into subject-specialist teaching, laboratory work and structured exam preparation.`
-            : `Class ${n} is a Matriculation year: focused BSEK syllabus coverage, past papers and practical examinations.`,
-      subjects: subjectsFor(n),
-      outcomes: outcomesFor(n),
-      faculty: facultyFor(n),
-    } satisfies ClassLevel;
-  }),
+export const aboutIntro = [
+  "The Academy PECHS is committed to creating an environment where students can learn, grow and prepare confidently for the future.",
+  "Through academic learning and personal development, students are encouraged to think independently, communicate effectively, take responsibility and approach new challenges with confidence.",
+  "The school's educational environment aims to support students not only in their academic journey but also in developing the qualities they need for life beyond the classroom.",
 ];
 
-export const getClassLevel = (slug: string) => classLevels.find((c) => c.slug === slug);
+export const mission =
+  "To provide students with a strong academic foundation in a supportive and intellectually engaging environment, encouraging curiosity, discipline, confidence and lifelong learning.";
+
+export const vision =
+  "To nurture confident, capable and responsible young individuals who are prepared to pursue higher education, embrace new challenges and make meaningful contributions to their communities and the wider world.";
+
+export const headMessage = [
+  "Welcome to The Academy PECHS. Our aim is to create an environment where students are encouraged to learn with curiosity, think independently, develop confidence and prepare themselves for the opportunities and responsibilities that lie ahead.",
+  "We believe meaningful education extends beyond academic achievement. It is about developing character, responsibility, communication and the ability to approach challenges with confidence and purpose.",
+];
+
+export const coreValues = [
+  {
+    title: "Excellence",
+    detail:
+      "Encouraging students to pursue high standards in their academic and personal development.",
+  },
+  {
+    title: "Integrity",
+    detail: "Promoting honesty, responsibility, respect and ethical conduct.",
+  },
+  {
+    title: "Curiosity",
+    detail:
+      "Encouraging students to ask questions, explore ideas and develop a lifelong interest in learning.",
+  },
+  {
+    title: "Discipline",
+    detail: "Building habits of responsibility, consistency, punctuality and commitment.",
+  },
+  {
+    title: "Confidence",
+    detail:
+      "Helping students develop the confidence to express ideas, take initiative and face challenges.",
+  },
+  {
+    title: "Respect",
+    detail:
+      "Creating an environment where students, teachers, parents and the wider community are treated with dignity.",
+  },
+  {
+    title: "Responsibility",
+    detail:
+      "Encouraging students to understand their responsibilities toward themselves, others and society.",
+  },
+  {
+    title: "Growth",
+    detail: "Supporting continuous academic, intellectual, social and personal development.",
+  },
+];
+
+export const academicPillars = [
+  {
+    title: "Learning",
+    detail: "Students develop knowledge and understanding through structured education.",
+  },
+  {
+    title: "Thinking",
+    detail: "Students are encouraged to analyse information and develop independent thought.",
+  },
+  {
+    title: "Practice",
+    detail:
+      "Students strengthen their understanding through assignments, projects, activities and academic preparation.",
+  },
+  {
+    title: "Communication",
+    detail: "Students learn to express ideas clearly and confidently.",
+  },
+  {
+    title: "Preparation",
+    detail: "Students are prepared for examinations and future academic pathways.",
+  },
+];
+
+export const developmentAreas = [
+  {
+    title: "Academic development",
+    detail: "Building knowledge, understanding, analytical ability and examination readiness.",
+  },
+  {
+    title: "Intellectual development",
+    detail: "Encouraging students to question, analyse, research and form independent opinions.",
+  },
+  {
+    title: "Personal development",
+    detail: "Building confidence, responsibility, discipline and self-awareness.",
+  },
+  {
+    title: "Communication",
+    detail:
+      "Encouraging students to express themselves clearly through speaking, writing, presentations and collaborative work.",
+  },
+  {
+    title: "Leadership",
+    detail:
+      "Providing opportunities for students to take responsibility, organise activities and develop leadership qualities.",
+  },
+  {
+    title: "Social development",
+    detail: "Helping students understand teamwork, respect, cooperation and community responsibility.",
+  },
+];
+
+export type Programme = {
+  slug: string;
+  name: string;
+  stage: string;
+  summary: string;
+  approach: string[];
+  support: string[];
+  /** Subject offerings are unconfirmed and render as TO VERIFY placeholders. */
+  subjectsStatus: string;
+  faculty: { role: string; area: string; note: string }[];
+};
+
+const FACULTY_NOTE = `Faculty profile — ${TO_VERIFY}`;
+
+export const programmes: Programme[] = [
+  {
+    slug: "o-level",
+    name: "O Level",
+    stage: "Lower secondary to O Level",
+    summary:
+      "A structured academic programme focused on understanding concepts, building study discipline and preparing students thoroughly for their examinations.",
+    approach: [
+      "Concept-led teaching supported by regular practice and assessment",
+      "Structured note-taking, revision technique and examination preparation",
+      "Encouragement of questions, discussion and independent reading",
+      "Written and spoken communication developed across subjects",
+    ],
+    support: [
+      "Class-level academic guidance and feedback",
+      "Subject teachers available for additional explanation",
+      "Progress communicated with parents through the school office",
+    ],
+    subjectsStatus: `Subject list for O Level — ${TO_VERIFY}`,
+    faculty: [
+      { role: "Subject Teacher", area: "Sciences", note: FACULTY_NOTE },
+      { role: "Subject Teacher", area: "Mathematics", note: FACULTY_NOTE },
+      { role: "Subject Teacher", area: "Languages & Humanities", note: FACULTY_NOTE },
+    ],
+  },
+  {
+    slug: "a-level",
+    name: "A Level",
+    stage: "Higher secondary",
+    summary:
+      "An advanced programme where students deepen subject expertise, work more independently and prepare for university study and future pathways.",
+    approach: [
+      "Deeper subject specialisation with an emphasis on analysis",
+      "Independent learning, research and structured written argument",
+      "Presentations, discussion and collaborative academic work",
+      "Preparation for higher education applications and interviews",
+    ],
+    support: [
+      "Academic mentoring and study planning",
+      "Guidance on subject combinations and academic pathways",
+      "Support with examination technique and time management",
+    ],
+    subjectsStatus: `Subject list for A Level — ${TO_VERIFY}`,
+    faculty: [
+      { role: "Subject Teacher", area: "Sciences", note: FACULTY_NOTE },
+      { role: "Subject Teacher", area: "Mathematics", note: FACULTY_NOTE },
+      { role: "Subject Teacher", area: "Business & Humanities", note: FACULTY_NOTE },
+    ],
+  },
+];
+
+export const getProgramme = (slug: string) => programmes.find((p) => p.slug === slug);
+
+export const studentLifeAreas = [
+  { title: "Clubs & societies", detail: `Available clubs and societies — ${TO_VERIFY}` },
+  { title: "Sports", detail: `Sports offered and facilities — ${TO_VERIFY}` },
+  { title: "Competitions", detail: `Inter-school and internal competitions — ${TO_VERIFY}` },
+  { title: "Events & celebrations", detail: `Annual events calendar — ${TO_VERIFY}` },
+  { title: "Workshops & seminars", detail: `Workshop programme — ${TO_VERIFY}` },
+  { title: "Leadership opportunities", detail: `Student council and leadership roles — ${TO_VERIFY}` },
+];
+
+export const campusAreas = [
+  { title: "Classrooms", detail: `Classroom facilities — ${TO_VERIFY}` },
+  { title: "Laboratories", detail: `Science laboratory facilities — ${TO_VERIFY}` },
+  { title: "Library", detail: `Library facilities — ${TO_VERIFY}` },
+  { title: "Computer facilities", detail: `IT facilities — ${TO_VERIFY}` },
+  { title: "Activity areas", detail: `Activity and assembly spaces — ${TO_VERIFY}` },
+  { title: "Sports areas", detail: `Sports areas — ${TO_VERIFY}` },
+];
+
+export const admissionSteps = [
+  { title: "Inquiry", detail: "Submit the online inquiry form or contact the school office." },
+  { title: "Campus visit", detail: "Visit the school, meet the team and see the learning environment." },
+  { title: "Application", detail: `Complete the application form and submit the required documents — ${TO_VERIFY}` },
+  { title: "Assessment", detail: `Assessment format and subjects — ${TO_VERIFY}` },
+  { title: "Interview", detail: `Interview process for students and parents — ${TO_VERIFY}` },
+  { title: "Decision", detail: "The school confirms the outcome of the application." },
+  { title: "Enrolment", detail: `Fee payment and enrolment confirmation — ${TO_VERIFY}` },
+];
+
+export const requiredDocuments = [
+  `Document checklist — ${TO_VERIFY}`,
+  `Age and grade eligibility — ${TO_VERIFY}`,
+  `Admission dates and deadlines — ${TO_VERIFY}`,
+  `Previous school records required — ${TO_VERIFY}`,
+];
 
 export const feeStructure = [
-  { level: "Montessori & Kindergarten", admission: "Rs. 4,000", monthly: "Rs. 2,000", annual: "Rs. 3,000" },
-  { level: "Classes 1 - 5", admission: "Rs. 5,000", monthly: "Rs. 2,500", annual: "Rs. 3,500" },
-  { level: "Classes 6 - 8", admission: "Rs. 6,000", monthly: "Rs. 3,000", annual: "Rs. 4,000" },
-  { level: "Classes 9 - 10 (Matric)", admission: "Rs. 7,500", monthly: "Rs. 3,500", annual: "Rs. 5,000" },
+  { level: "O Level", admission: TO_VERIFY, monthly: TO_VERIFY, annual: TO_VERIFY },
+  { level: "A Level", admission: TO_VERIFY, monthly: TO_VERIFY, annual: TO_VERIFY },
+  { level: "Examination & registration charges", admission: TO_VERIFY, monthly: TO_VERIFY, annual: TO_VERIFY },
 ];
 
 export const feeNotes = [
-  "All amounts above are placeholders for layout purposes and must be replaced with the school's official fee schedule.",
-  "Admission fee is one-time and charged at enrolment; annual charges cover examinations, stationery and activities.",
-  "Monthly tuition is payable by the 10th of each month at the school office.",
-  "Board registration and examination fees for Classes 9-10 are charged separately as notified by BSEK.",
-  "Sibling and hardship concessions may be available - please discuss with the administration.",
-];
-
-export const facilities = [
-  { title: "Classrooms", detail: "Grade-wise classrooms with whiteboards and multimedia support." },
-  { title: "Science Laboratories", detail: "Physics, chemistry and biology practicals for secondary students." },
-  { title: "Computer Lab", detail: "Desktop workstations for ICT and computer studies periods." },
-  { title: "Library", detail: "Textbooks, reference material and a growing storybook collection." },
-  { title: "Sports Ground", detail: "Open play area for cricket, football and morning assembly." },
-  { title: "Transport", detail: "School van service for nearby Landhi and Korangi sectors (subject to routes)." },
-  { title: "Safety", detail: "Boundary wall, gate security and monitored entry and dispersal." },
+  "No fee figures are published on this website until the school confirms its official fee schedule.",
+  "Admission fees, tuition, annual charges, examination and registration charges will be listed here exactly as issued by the school.",
+  "For current fee information, please contact the school office directly or submit an admission inquiry.",
 ];
 
 export const newsItems = [
   {
-    slug: "admissions-open",
-    title: "Admissions open for the new academic session",
-    date: "2026-08-10",
+    slug: "admissions-inquiry-open",
+    title: "Admission inquiries welcome",
+    date: `Date — ${TO_VERIFY}`,
     category: "Admissions",
     excerpt:
-      "Limited seats are available from Montessori to Class 9. Families can submit an online inquiry and book a campus visit with the administration.",
+      "Families interested in The Academy PECHS can submit an online inquiry. Admission dates, grade availability and requirements will be published once confirmed by the school.",
     featured: true,
   },
   {
-    slug: "matric-result-day",
-    title: "Matriculation result celebration for Class 10",
-    date: "2026-07-28",
+    slug: "academic-events",
+    title: "Academic events and workshops",
+    date: `Date — ${TO_VERIFY}`,
     category: "Academics",
     excerpt:
-      "Students and parents gathered for a short assembly recognising effort and improvement across the BSEK examination group.",
+      "Details of academic events, seminars and workshops will appear here once the school shares its calendar.",
     featured: false,
   },
   {
-    slug: "inter-house-sports",
-    title: "Inter-house sports week announced",
-    date: "2026-07-15",
-    category: "Sports",
+    slug: "student-achievements",
+    title: "Student achievements",
+    date: `Date — ${TO_VERIFY}`,
+    category: "Achievements",
     excerpt:
-      "Cricket, football and relay races will run through the last week of the month, with prizes at the closing assembly.",
+      "Verified student achievements, competition results and recognitions will be published in this section.",
     featured: false,
   },
   {
-    slug: "parent-teacher-meeting",
-    title: "Parent-teacher meeting schedule",
-    date: "2026-07-05",
+    slug: "parent-notices",
+    title: "Notices for parents",
+    date: `Date — ${TO_VERIFY}`,
     category: "Notice",
     excerpt:
-      "Class-wise meeting slots are shared through student diaries. Parents are requested to collect progress reports in person.",
-    featured: false,
-  },
-  {
-    slug: "science-exhibition",
-    title: "Science exhibition by the middle section",
-    date: "2026-06-20",
-    category: "Events",
-    excerpt:
-      "Classes 6-8 presented working models on energy, water and simple machines in the school hall.",
+      "Announcements, academic calendar updates and parent communications will be shared here.",
     featured: false,
   },
 ];
 
-export const admissionSteps = [
-  { title: "Inquiry", detail: "Submit the online inquiry form or call the school office to check seat availability." },
-  { title: "Campus Visit", detail: "Meet the administration, tour the classrooms and discuss your child's needs." },
-  { title: "Application", detail: "Complete the admission form and attach the required documents." },
-  { title: "Assessment", detail: "A short written assessment appropriate to the class applied for." },
-  { title: "Interview", detail: "A brief parent and student meeting, where required for the class." },
-  { title: "Decision", detail: "The school confirms the admission offer and allotted section." },
-  { title: "Fee & Enrolment", detail: "Pay admission dues, collect the diary and the uniform list." },
-  { title: "Start Classes", detail: "Your child joins their class from the agreed start date." },
-];
-
-export const requiredDocuments = [
-  "Copy of the student's birth certificate or B-Form",
-  "Two recent passport-size photographs of the student",
-  "Copy of both parents' / guardian's CNIC",
-  "School leaving certificate and last result card (for transfer cases)",
-  "Vaccination record (for pre-school admissions)",
-];
+export const newsNote =
+  "These entries show how news and events will be presented. Real announcements, dates and photographs will replace them once provided by the school.";
 
 export const faqs = [
   {
     keywords: ["fee", "fees", "tuition", "monthly", "cost", "charges", "price"],
     question: "What is the fee structure?",
     answer:
-      "Fees depend on the level: pre-school, Classes 1-5, 6-8 and Matric each have their own admission fee, monthly tuition and annual charges. The figures on our Fee Structure page are placeholders pending confirmation - please contact the office for the official schedule.",
+      "The official fee structure has not been confirmed for publication yet, so no figures are shown on the Fee Structure page. Please contact the school office or submit an admission inquiry for current fee information.",
   },
   {
-    keywords: ["admission", "apply", "enrol", "enroll", "process", "form", "seat", "test"],
+    keywords: ["admission", "apply", "enrol", "enroll", "process", "form", "seat", "test", "assessment"],
     question: "How do I apply for admission?",
     answer:
-      "The process is: inquiry, campus visit, application form, a short assessment, an interview where required, admission decision, then fee payment and enrolment. Start by submitting the online admission inquiry form on the Admissions page.",
+      "The general process is inquiry, campus visit, application, assessment, interview, decision and enrolment. Exact requirements, dates and documents are still to be confirmed by the school — start with the inquiry form on the Admissions page.",
   },
   {
-    keywords: ["timing", "timings", "time", "hours", "open", "close", "shift", "schedule"],
+    keywords: ["timing", "timings", "time", "hours", "open", "close", "office", "schedule"],
     question: "What are the school timings?",
     answer:
-      "Pre-school runs 8:00 AM-12:00 PM, Classes 1-5 until 1:30 PM, Classes 6-8 until 2:00 PM and Classes 9-10 until 2:30 PM. The office is open Monday to Saturday, 8:00 AM-3:00 PM.",
+      "School and office hours have not been confirmed for publication yet. Please contact the school office to confirm timings.",
   },
   {
-    keywords: ["class", "classes", "grade", "level", "montessori", "kg", "matric", "secondary", "offer"],
-    question: "Which classes does the school offer?",
+    keywords: ["grade", "class", "level", "olevel", "o level", "alevel", "a level", "programme", "program", "offer"],
+    question: "Which programmes are offered?",
     answer:
-      "We offer Montessori and Kindergarten, Classes 1 to 8, and Matriculation Classes 9 and 10 under the Board of Secondary Education Karachi (BSEK).",
+      "The Academy PECHS is associated with the O Level and A Level segment. Exact grade levels, subject offerings and programme details must be confirmed by the school before they are published.",
   },
   {
-    keywords: ["where", "location", "address", "landhi", "map", "reach", "direction"],
+    keywords: ["where", "location", "address", "pechs", "map", "reach", "direction"],
     question: "Where is the school located?",
     answer:
-      "Plot A1-66, Street No. 3, Zamanabad Housing Society, Sector 36-B, Landhi Town, Karachi - close to main Landhi roads and easily reached from Korangi.",
+      "The school is located in PECHS, Karachi, Sindh. The exact street address and map location will be published once confirmed by the school.",
   },
   {
-    keywords: ["board", "bsek", "sindh", "exam", "curriculum", "syllabus", "cambridge"],
-    question: "Which board and curriculum do you follow?",
+    keywords: ["board", "curriculum", "cambridge", "syllabus", "exam", "examination"],
+    question: "Which curriculum and examination board is followed?",
     answer:
-      "We follow the Sindh Board curriculum and prepare students for the SSC (Matriculation) examinations of the Board of Secondary Education Karachi. Cambridge and A-Level programmes are not offered.",
+      "The school is associated with the O Level / A Level segment, but the exact examination board and affiliation are not confirmed for publication. Please contact the school to verify.",
   },
   {
-    keywords: ["transport", "van", "bus", "pick", "drop"],
-    question: "Is transport available?",
+    keywords: ["activity", "activities", "sports", "extracurricular", "club", "society", "event"],
+    question: "What activities are available?",
     answer:
-      "A school van service is generally available for nearby Landhi and Korangi sectors, subject to route availability. Please confirm your area with the office before enrolment.",
-  },
-  {
-    keywords: ["uniform", "dress", "shoes", "book", "books", "stationery"],
-    question: "What about uniform and books?",
-    answer:
-      "A uniform and booklist is handed over at enrolment. Books follow the Sindh Textbook Board along with supporting workbooks selected by the school.",
-  },
-  {
-    keywords: ["coed", "co-ed", "boys", "girls", "coeducation"],
-    question: "Is the school co-educational?",
-    answer:
-      "Yes, Career House Schooling System is a co-educational school serving both boys and girls from pre-school to Matriculation.",
+      "Clubs, societies, sports and events are an important part of school life, but the specific programmes offered have not been confirmed yet and are marked TO VERIFY on the Student Life page.",
   },
   {
     keywords: ["contact", "phone", "call", "email", "number", "whatsapp"],
     question: "How can I contact the school?",
     answer:
-      "Our phone number and email are not published yet - the fastest route today is the online admission inquiry form, or visiting the campus in Zamanabad, Landhi Town during office hours.",
+      "Phone, WhatsApp and email details are not published yet. The quickest route today is the online inquiry form on the Admissions page, which you can send directly to the school.",
   },
   {
-    keywords: ["activity", "activities", "sports", "extracurricular", "club", "event"],
-    question: "What activities are offered?",
+    keywords: ["result", "results", "achievement", "ranking", "university", "alumni"],
+    question: "What are the school's results and achievements?",
     answer:
-      "Students take part in cricket, football and volleyball, art and drama, science and debate clubs, plus inter-house sports weeks and cultural events through the year.",
+      "No examination results, rankings or university placements are published on this website because they have not been verified. Verified achievements will be added when the school provides them.",
+  },
+  {
+    keywords: ["faculty", "teacher", "teachers", "staff", "principal", "head"],
+    question: "Who teaches at the school?",
+    answer:
+      "Faculty and leadership profiles will be published once the school supplies verified names, qualifications and photographs. Nothing is invented here.",
   },
 ];
