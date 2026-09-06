@@ -2,69 +2,101 @@ import { Link, createFileRoute } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 
 import { PageHeader } from "@/components/site/PageHeader";
-import { classLevels, school } from "@/data/school";
+import { Reveal } from "@/components/site/Reveal";
+import { academicPillars, developmentAreas, programmes } from "@/data/school";
 
 export const Route = createFileRoute("/academics/")({
   head: () => ({
     meta: [
-      { title: "Academics & Classes | Career House Schooling System" },
+      { title: "Academics | The Academy PECHS" },
       {
         name: "description",
         content:
-          "Courses, faculty and galleries for every class at CHSS Landhi Karachi — Montessori, Kindergarten, Classes 1 to 8 and Matric Classes 9–10 under BSEK.",
+          "Academic life at The Academy PECHS: O Level and A Level programmes, learning approach, academic support and student development in Karachi.",
       },
-      { property: "og:title", content: "Academics at Career House Schooling System" },
+      { property: "og:title", content: "Academics at The Academy PECHS" },
       {
         property: "og:description",
         content:
-          "Class-wise subjects, teaching team and timings from Montessori to Matriculation in Landhi, Karachi.",
+          "O Level and A Level programmes, learning approach and academic support at The Academy PECHS.",
       },
     ],
   }),
   component: AcademicsIndex,
 });
 
-const stageOrder = ["Pre-School", "Primary", "Middle", "Secondary"] as const;
-
 function AcademicsIndex() {
   return (
     <>
       <PageHeader
         eyebrow="Academics"
-        title="Classes, courses and teaching team"
-        description={`Every class has its own subjects, learning outcomes, faculty and gallery. Secondary students are prepared for the SSC examinations of the ${school.board}.`}
+        title="Learning goes beyond the classroom"
+        description="Academic development is a journey that encourages students to understand concepts, ask meaningful questions, think critically and develop the confidence to apply what they learn."
       />
 
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        {stageOrder.map((stage) => {
-          const levels = classLevels.filter((level) => level.stage === stage);
-          return (
-            <div key={stage} className="mb-14 last:mb-0">
-              <h2 className="accent-rule font-display text-2xl font-bold">{stage}</h2>
-              <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                {levels.map((level) => (
-                  <Link
-                    key={level.slug}
-                    to="/academics/$class"
-                    params={{ class: level.slug }}
-                    className="group hover-lift rounded-2xl border border-border bg-card p-6"
-                  >
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-ocean">
-                      {level.ageRange}
-                    </p>
-                    <h3 className="mt-2 font-display text-lg font-bold group-hover:text-brand">
-                      {level.name}
-                    </h3>
-                    <p className="mt-2 text-sm text-muted-foreground">{level.summary}</p>
-                    <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand">
-                      View class <ArrowRight className="size-4" aria-hidden="true" />
-                    </span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          );
-        })}
+      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+        <Reveal>
+          <h2 className="accent-rule font-display text-3xl font-bold">Programmes</h2>
+        </Reveal>
+        <div className="mt-12 grid gap-6 md:grid-cols-2">
+          {programmes.map((programme, i) => (
+            <Reveal key={programme.slug} delay={i * 100}>
+              <Link
+                to="/academics/$programme"
+                params={{ programme: programme.slug }}
+                className="group hover-lift block h-full rounded-lg border border-border bg-card p-8"
+              >
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brand">
+                  {programme.stage}
+                </p>
+                <h3 className="mt-3 font-display text-2xl font-bold">{programme.name}</h3>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                  {programme.summary}
+                </p>
+                <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand">
+                  View programme <ArrowRight className="size-4" aria-hidden="true" />
+                </span>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-surface">
+        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+          <Reveal>
+            <h2 className="accent-rule font-display text-3xl font-bold">The academic experience</h2>
+          </Reveal>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {academicPillars.map((pillar, i) => (
+              <Reveal key={pillar.title} delay={i * 70}>
+                <article className="hover-lift h-full rounded-lg border border-border bg-card p-6">
+                  <h3 className="font-display text-lg font-bold">{pillar.title}</h3>
+                  <span className="mt-3 block h-0.5 w-8 rounded-full bg-gold" aria-hidden="true" />
+                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                    {pillar.detail}
+                  </p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+        <Reveal>
+          <h2 className="accent-rule font-display text-3xl font-bold">Student development</h2>
+        </Reveal>
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {developmentAreas.map((area, i) => (
+            <Reveal key={area.title} delay={i * 70}>
+              <article className="hover-lift h-full rounded-lg border border-border bg-card p-6">
+                <h3 className="font-display text-lg font-bold">{area.title}</h3>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{area.detail}</p>
+              </article>
+            </Reveal>
+          ))}
+        </div>
       </section>
     </>
   );

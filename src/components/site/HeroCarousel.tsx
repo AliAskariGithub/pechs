@@ -5,42 +5,25 @@ import classroom from "@/assets/classroom.jpg";
 import computerLab from "@/assets/computer-lab.jpg";
 import library from "@/assets/library.jpg";
 import scienceLab from "@/assets/science-lab.jpg";
-import sports from "@/assets/sports.jpg";
+import studentLife from "@/assets/student-life.jpg";
 
 const slides = [
   {
     src: campusHero,
-    alt: "Students in uniform walking into the Career House Schooling System campus in Landhi, Karachi",
+    alt: "Students walking into the campus of The Academy PECHS in Karachi",
   },
-  {
-    src: classroom,
-    alt: "Primary students raising hands during a lesson at CHSS",
-  },
-  {
-    src: scienceLab,
-    alt: "Senior students performing an experiment in the CHSS science laboratory",
-  },
-  {
-    src: computerLab,
-    alt: "Students working at computers in the CHSS computer lab",
-  },
-  {
-    src: sports,
-    alt: "Students playing cricket and football on the CHSS ground",
-  },
-  {
-    src: library,
-    alt: "Students reading in the CHSS library",
-  },
+  { src: classroom, alt: "A teacher leading a lesson with students at their desks" },
+  { src: scienceLab, alt: "Students carrying out a chemistry experiment in the science laboratory" },
+  { src: library, alt: "Students studying at tables in the school library" },
+  { src: computerLab, alt: "Students working at desktop computers in the computer laboratory" },
+  { src: studentLife, alt: "Students presenting a project to classmates in the assembly hall" },
 ];
 
-const INTERVAL_MS = 3000;
+const INTERVAL_MS = 3500;
 
 /**
- * Auto-advancing hero background carousel: swipes to the next image
- * every 3s (new photo slides in from the left, previous exits right)
- * with a subtle Ken Burns zoom, dot indicators and a gentle parallax
- * shift while scrolling. Pauses on hover.
+ * Auto-advancing hero background carousel with a gentle Ken Burns zoom,
+ * dot indicators and a subtle parallax shift. Pauses on hover.
  */
 export function HeroCarousel() {
   const [active, setActive] = useState(0);
@@ -57,22 +40,16 @@ export function HeroCarousel() {
 
   useEffect(() => {
     if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const id = window.setInterval(
-      () => goTo((active + 1) % slides.length),
-      INTERVAL_MS,
-    );
+    const id = window.setInterval(() => goTo((active + 1) % slides.length), INTERVAL_MS);
     return () => window.clearInterval(id);
   }, [paused, active]);
-
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     let frame = 0;
     const onScroll = () => {
       cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() =>
-        setOffset(Math.min(window.scrollY * 0.15, 120)),
-      );
+      frame = requestAnimationFrame(() => setOffset(Math.min(window.scrollY * 0.15, 120)));
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
@@ -121,11 +98,8 @@ export function HeroCarousel() {
             aria-label={`Show photo ${i + 1}`}
             aria-current={i === active}
             onClick={() => goTo(i)}
-
             className={`hero-dot h-1.5 rounded-full ${
-              i === active
-                ? "w-6 bg-brand"
-                : "w-1.5 bg-navy-foreground/50 hover:bg-navy-foreground/80"
+              i === active ? "w-6 bg-gold" : "w-1.5 bg-navy-foreground/50 hover:bg-navy-foreground/80"
             }`}
           />
         ))}
