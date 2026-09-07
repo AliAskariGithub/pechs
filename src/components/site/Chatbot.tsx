@@ -10,13 +10,13 @@ type Message = { id: number; from: "bot" | "user"; text: string };
 const suggestions = [
   "What are the fees?",
   "How do I apply for admission?",
-  "What are the school timings?",
-  "Which classes do you offer?",
+  "What are the office timings?",
+  "Which programmes do you offer?",
   "Where is the school located?",
-  "Is transport available?",
+  "How can I contact the school?",
 ];
 
-const greeting = `Assalam-o-Alaikum! I'm the ${school.shortName} assistant. Ask me about fees, admissions, timings, classes or location — I answer instantly, any time of day.`;
+const greeting = `Assalam-o-Alaikum! I'm the ${school.shortName} assistant. Ask me about admissions, programmes, fees, timings or how to reach the school — I answer any time of day.`;
 
 function answerFor(input: string): string {
   const text = input.toLowerCase();
@@ -34,7 +34,7 @@ function answerFor(input: string): string {
 
   if (best) return best.answer;
 
-  return "I don't have that detail yet. Please submit the admission inquiry form on the Admissions page, or visit the school office in Zamanabad, Landhi Town (Mon–Sat, 8:00 AM – 3:00 PM) and the administration will help you right away.";
+  return `I don't have that detail confirmed yet. Please submit the inquiry form on the Admissions page or contact the school office in ${school.location}, and the administration will assist you.`;
 }
 
 export function Chatbot() {

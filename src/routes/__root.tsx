@@ -83,13 +83,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Career House Schooling System – Landhi Town, Karachi" },
+      { title: "The Academy PECHS — Learn Today. Lead Tomorrow." },
       {
         name: "description",
         content:
-          "Career House Schooling System is a co-educational private school in Landhi Town, Karachi, offering pre-school to Matriculation under BSEK.",
+          "The Academy PECHS is an academic institution in PECHS, Karachi, supporting students in the O Level and A Level segment.",
       },
-      { name: "author", content: "Career House Schooling System" },
+      { name: "author", content: "The Academy PECHS" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -99,7 +99,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Urbanist:wght@500;600;700;800&family=Epilogue:wght@400;500;600&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@400;500;600;700&display=swap",
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
