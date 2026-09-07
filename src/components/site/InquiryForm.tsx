@@ -24,12 +24,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { classLevels } from "@/data/school";
+import { programmes } from "@/data/school";
 
 const schema = z.object({
   studentName: z.string().min(2, "Please enter the student's full name"),
   dateOfBirth: z.string().min(1, "Please enter the date of birth"),
-  classApplied: z.string().min(1, "Please choose a class"),
+  classApplied: z.string().min(1, "Please choose a programme"),
   guardianName: z.string().min(2, "Please enter the parent or guardian name"),
   phone: z
     .string()
@@ -42,14 +42,14 @@ const schema = z.object({
 
 type InquiryValues = z.infer<typeof schema>;
 
-const contactTimes = ["Morning (8 AM – 11 AM)", "Midday (11 AM – 1 PM)", "Afternoon (1 PM – 3 PM)"];
+const contactTimes = ["Morning", "Midday", "Afternoon", "Any time during office hours"];
 
 function toPlainText(values: InquiryValues) {
   return [
-    "Admission inquiry — Career House Schooling System",
+    "Admission inquiry — The Academy PECHS",
     `Student name: ${values.studentName}`,
     `Date of birth: ${values.dateOfBirth}`,
-    `Class applying for: ${values.classApplied}`,
+    `Programme / level applying for: ${values.classApplied}`,
     `Parent / guardian: ${values.guardianName}`,
     `Phone: ${values.phone}`,
     `Email: ${values.email || "not provided"}`,
@@ -169,19 +169,20 @@ export function InquiryForm() {
           name="classApplied"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Class applying for</FormLabel>
+              <FormLabel>Programme applying for</FormLabel>
               <Select onValueChange={field.onChange} value={field.value}>
                 <FormControl>
                   <SelectTrigger>
-                    <SelectValue placeholder="Select a class" />
+                    <SelectValue placeholder="Select a programme" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  {classLevels.map((level) => (
-                    <SelectItem key={level.slug} value={level.name}>
-                      {level.name}
+                  {programmes.map((programme) => (
+                    <SelectItem key={programme.slug} value={programme.name}>
+                      {programme.name}
                     </SelectItem>
                   ))}
+                  <SelectItem value="Not sure yet">Not sure yet</SelectItem>
                 </SelectContent>
               </Select>
               <FormMessage />
