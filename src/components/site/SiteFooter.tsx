@@ -5,8 +5,8 @@ import { school } from "@/data/school";
 
 export function SiteFooter() {
   return (
-    <footer className="mt-24 bg-navy text-navy-foreground">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 md:grid-cols-3">
+    <footer className="bg-navy text-navy-foreground">
+      <div className="mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 md:grid-cols-[1.25fr_1fr_1fr]">
         <div>
           <h2 className="font-display text-xl font-bold">{school.name}</h2>
           <span className="mt-3 block h-0.5 w-14 rounded-full bg-gold" aria-hidden="true" />
