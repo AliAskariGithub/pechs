@@ -22,8 +22,8 @@ export function Wordmark({ tone = "dark" }: { tone?: "dark" | "light" }) {
   const primary = tone === "light" ? "text-navy-foreground" : "text-navy";
   const secondary = tone === "light" ? "text-navy-foreground/70" : "text-muted-foreground";
   return (
-    <span className="leading-tight">
-      <span className={`block font-display text-lg font-bold tracking-tight ${primary}`}>
+      <span className="leading-tight">
+      <span className={`block font-display text-xl ${primary}`}>
         The Academy
       </span>
       <span
@@ -40,7 +40,7 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur">
-      <div className="mx-auto flex h-20 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
+      <div className="mx-auto grid h-20 max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 sm:flex sm:justify-between sm:px-6">
         <Link to="/" className="group flex items-center gap-3" aria-label={school.name}>
           <Wordmark />
         </Link>
