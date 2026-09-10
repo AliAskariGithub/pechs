@@ -30,7 +30,7 @@ function Home() {
   return (
     <>
       <section className="overflow-hidden bg-surface">
-        <div className="mx-auto grid min-h-[calc(100svh-5rem)] max-w-7xl items-center gap-12 px-4 py-14 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20 lg:py-16">
+        <div className="mx-auto grid min-h-svh max-w-7xl items-center gap-12 px-4 py-14 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20 lg:py-16">
           <div className="relative z-10 py-4 lg:py-12">
             <p className="flex items-center gap-4 text-xs font-semibold uppercase tracking-[0.24em] text-gold">
               <span className="h-px w-10 bg-gold" aria-hidden="true" />
