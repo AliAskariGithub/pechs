@@ -563,3 +563,8 @@ input:focus, textarea:focus, select:focus { box-shadow: 0 0 0 3px color-mix(in o
   a, button, article, img, [data-slot="button"] { transition: none !important; transform: none !important; }
 }
 .ken-burns { animation: ken-burns 6.5s ease-out both; } @media (prefers-reduced-motion: reduce){.ken-burns{animation:none}}
+@keyframes fade-up-soft { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+main section h1, main section h2 { animation: fade-up-soft .7s cubic-bezier(.2,.7,.2,1) both; }
+tr { transition: background-color .2s ease; }
+tbody tr:hover { background-color: color-mix(in oklab, var(--gold) 10%, transparent); }
+@media (prefers-reduced-motion: reduce) { main section h1, main section h2 { animation: none; } }

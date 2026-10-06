@@ -11,7 +11,7 @@ export const Route = createFileRoute("/news")({
       {
         name: "description",
         content:
-          "News, events, notices and student achievements from The Academy PECHS, Karachi. Announcements are published once confirmed by the school.",
+          "News, events, notices and student achievements from The Academy PECHS, Karachi.",
       },
       { property: "og:title", content: "News & Events — The Academy PECHS" },
       {

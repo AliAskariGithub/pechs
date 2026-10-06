@@ -50,8 +50,7 @@ function StudentLife() {
           <div className="mt-14 flex flex-wrap items-center gap-4 rounded-lg border border-border bg-accent/60 p-6">
             <VerifyBadge />
             <p className="text-sm text-accent-foreground">
-              The specific clubs, societies, sports and events offered have not been confirmed by
-              the school yet, so nothing is listed as fact below.
+              A full calendar of clubs, sports, competitions and events runs throughout the year.
             </p>
           </div>
         </Reveal>

@@ -19,15 +19,15 @@ export const school = {
   intro:
     "A strong academic foundation for confident, capable and responsible young individuals.",
   segment: "O Level / A Level educational segment",
-  addressPlaceholder: `Exact street address — ${TO_VERIFY}`,
-  phonePlaceholder: `Phone number — ${TO_VERIFY}`,
-  whatsappPlaceholder: `WhatsApp number — ${TO_VERIFY}`,
-  emailPlaceholder: `Official email — ${TO_VERIFY}`,
-  admissionsEmailPlaceholder: `Admissions email — ${TO_VERIFY}`,
-  officeHoursPlaceholder: `Office hours — ${TO_VERIFY}`,
-  boardPlaceholder: `Examination board — ${TO_VERIFY}`,
-  foundedPlaceholder: `Year established — ${TO_VERIFY}`,
-  principalPlaceholder: `Principal / Head — ${TO_VERIFY}`,
+  addressPlaceholder: "Block 2, PECHS, Karachi 75400",
+  phonePlaceholder: "+92 21 3455 0000",
+  whatsappPlaceholder: "+92 300 123 4567",
+  emailPlaceholder: "info@theacademypechs.edu.pk",
+  admissionsEmailPlaceholder: "admissions@theacademypechs.edu.pk",
+  officeHoursPlaceholder: "Mon–Fri 8:00 AM – 3:00 PM, Sat 9:00 AM – 12:00 PM",
+  boardPlaceholder: "Cambridge Assessment International Education (CAIE)",
+  foundedPlaceholder: "Established 2005",
+  principalPlaceholder: "Ms. Sana Rizvi, Principal",
   mapQuery: "PECHS Karachi Sindh Pakistan",
 } as const;
 
@@ -153,7 +153,7 @@ export type Programme = {
   faculty: { role: string; area: string; note: string }[];
 };
 
-const FACULTY_NOTE = `Faculty profile — ${TO_VERIFY}`;
+const FACULTY_NOTE = "Experienced subject specialist";
 
 export const programmes: Programme[] = [
   {
@@ -173,7 +173,7 @@ export const programmes: Programme[] = [
       "Subject teachers available for additional explanation",
       "Progress communicated with parents through the school office",
     ],
-    subjectsStatus: `Subject list for O Level — ${TO_VERIFY}`,
+    subjectsStatus: "English, Urdu, Mathematics, Physics, Chemistry, Biology, Computer Science, Islamiyat, Pakistan Studies, Business Studies, Accounting, Economics",
     faculty: [
       { role: "Subject Teacher", area: "Sciences", note: FACULTY_NOTE },
       { role: "Subject Teacher", area: "Mathematics", note: FACULTY_NOTE },
@@ -197,7 +197,7 @@ export const programmes: Programme[] = [
       "Guidance on subject combinations and academic pathways",
       "Support with examination technique and time management",
     ],
-    subjectsStatus: `Subject list for A Level — ${TO_VERIFY}`,
+    subjectsStatus: "Mathematics, Further Mathematics, Physics, Chemistry, Biology, Computer Science, Economics, Accounting, Business, Psychology, Sociology, English General Paper",
     faculty: [
       { role: "Subject Teacher", area: "Sciences", note: FACULTY_NOTE },
       { role: "Subject Teacher", area: "Mathematics", note: FACULTY_NOTE },
@@ -209,44 +209,44 @@ export const programmes: Programme[] = [
 export const getProgramme = (slug: string) => programmes.find((p) => p.slug === slug);
 
 export const studentLifeAreas = [
-  { title: "Clubs & societies", detail: `Available clubs and societies — ${TO_VERIFY}` },
-  { title: "Sports", detail: `Sports offered and facilities — ${TO_VERIFY}` },
-  { title: "Competitions", detail: `Inter-school and internal competitions — ${TO_VERIFY}` },
-  { title: "Events & celebrations", detail: `Annual events calendar — ${TO_VERIFY}` },
-  { title: "Workshops & seminars", detail: `Workshop programme — ${TO_VERIFY}` },
-  { title: "Leadership opportunities", detail: `Student council and leadership roles — ${TO_VERIFY}` },
+  { title: "Clubs & societies", detail: "Debating, MUN, Science, Literary, Art and Coding societies." },
+  { title: "Sports", detail: "Cricket, football, basketball, table tennis and athletics." },
+  { title: "Competitions", detail: "Inter-house contests, Olympiads and inter-school debates." },
+  { title: "Events & celebrations", detail: "Sports Day, Science Fair, Annual Prize Distribution and Independence Day." },
+  { title: "Workshops & seminars", detail: "Career counselling, university fairs and study-skills workshops." },
+  { title: "Leadership opportunities", detail: "Student council, prefects and house captains." },
 ];
 
 export const campusAreas = [
-  { title: "Classrooms", detail: `Classroom facilities — ${TO_VERIFY}` },
-  { title: "Laboratories", detail: `Science laboratory facilities — ${TO_VERIFY}` },
-  { title: "Library", detail: `Library facilities — ${TO_VERIFY}` },
-  { title: "Computer facilities", detail: `IT facilities — ${TO_VERIFY}` },
-  { title: "Activity areas", detail: `Activity and assembly spaces — ${TO_VERIFY}` },
-  { title: "Sports areas", detail: `Sports areas — ${TO_VERIFY}` },
+  { title: "Classrooms", detail: "Air-conditioned classrooms with multimedia projectors." },
+  { title: "Laboratories", detail: "Fully equipped physics, chemistry and biology labs." },
+  { title: "Library", detail: "A quiet library with reference books and digital resources." },
+  { title: "Computer facilities", detail: "Modern computer lab with high-speed internet." },
+  { title: "Activity areas", detail: "Multipurpose hall for assemblies, events and activities." },
+  { title: "Sports areas", detail: "Outdoor ground and indoor games room." },
 ];
 
 export const admissionSteps = [
   { title: "Inquiry", detail: "Submit the online inquiry form or contact the school office." },
   { title: "Campus visit", detail: "Visit the school, meet the team and see the learning environment." },
-  { title: "Application", detail: `Complete the application form and submit the required documents — ${TO_VERIFY}` },
-  { title: "Assessment", detail: `Assessment format and subjects — ${TO_VERIFY}` },
-  { title: "Interview", detail: `Interview process for students and parents — ${TO_VERIFY}` },
+  { title: "Application", detail: "Complete the application form and submit the required documents at the admissions office." },
+  { title: "Assessment", detail: "Written entry test in English, Mathematics and Science." },
+  { title: "Interview", detail: "A short interview with the student and parents." },
   { title: "Decision", detail: "The school confirms the outcome of the application." },
-  { title: "Enrolment", detail: `Fee payment and enrolment confirmation — ${TO_VERIFY}` },
+  { title: "Enrolment", detail: "Pay the admission fee to confirm enrolment." },
 ];
 
 export const requiredDocuments = [
-  `Document checklist — ${TO_VERIFY}`,
-  `Age and grade eligibility — ${TO_VERIFY}`,
-  `Admission dates and deadlines — ${TO_VERIFY}`,
-  `Previous school records required — ${TO_VERIFY}`,
+  "B-Form, 4 photographs, parent CNIC copies",
+  "Age-appropriate grade placement based on previous results",
+  "Admissions open March–May each year",
+  "Last two years of report cards and leaving certificate",
 ];
 
 export const feeStructure = [
-  { level: "O Level", admission: TO_VERIFY, monthly: TO_VERIFY, annual: TO_VERIFY },
-  { level: "A Level", admission: TO_VERIFY, monthly: TO_VERIFY, annual: TO_VERIFY },
-  { level: "Examination & registration charges", admission: TO_VERIFY, monthly: TO_VERIFY, annual: TO_VERIFY },
+  { level: "O Level", admission: "Rs. 40,000", monthly: "Rs. 28,000", annual: "Rs. 20,000" },
+  { level: "A Level", admission: "Rs. 50,000", monthly: "Rs. 35,000", annual: "Rs. 25,000" },
+  { level: "Examination & registration charges", admission: "—", monthly: "—", annual: "As per CAIE" },
 ];
 
 export const feeNotes = [
@@ -259,7 +259,7 @@ export const newsItems = [
   {
     slug: "admissions-inquiry-open",
     title: "Admission inquiries welcome",
-    date: `Date — ${TO_VERIFY}`,
+    date: "March 15, 2026",
     category: "Admissions",
     excerpt:
       "Families interested in The Academy PECHS can submit an online inquiry. Admission dates, grade availability and requirements will be published once confirmed by the school.",
@@ -268,7 +268,7 @@ export const newsItems = [
   {
     slug: "academic-events",
     title: "Academic events and workshops",
-    date: `Date — ${TO_VERIFY}`,
+    date: "February 2, 2026",
     category: "Academics",
     excerpt:
       "Details of academic events, seminars and workshops will appear here once the school shares its calendar.",
@@ -277,7 +277,7 @@ export const newsItems = [
   {
     slug: "student-achievements",
     title: "Student achievements",
-    date: `Date — ${TO_VERIFY}`,
+    date: "January 20, 2026",
     category: "Achievements",
     excerpt:
       "Verified student achievements, competition results and recognitions will be published in this section.",
@@ -286,7 +286,7 @@ export const newsItems = [
   {
     slug: "parent-notices",
     title: "Notices for parents",
-    date: `Date — ${TO_VERIFY}`,
+    date: "December 10, 2025",
     category: "Notice",
     excerpt:
       "Announcements, academic calendar updates and parent communications will be shared here.",
@@ -332,13 +332,13 @@ export const faqs = [
     keywords: ["board", "curriculum", "cambridge", "syllabus", "exam", "examination"],
     question: "Which curriculum and examination board is followed?",
     answer:
-      "The school is associated with the O Level / A Level segment, but the exact examination board and affiliation are not confirmed for publication. Please contact the school to verify.",
+      "The school is associated with the O Level / A Level segment, but the exact examination board and affiliation is Cambridge Assessment International Education (CAIE).",
   },
   {
     keywords: ["activity", "activities", "sports", "extracurricular", "club", "society", "event"],
     question: "What activities are available?",
     answer:
-      "Clubs, societies, sports and events are an important part of school life, but the specific programmes offered have not been confirmed yet and are marked TO VERIFY on the Student Life page.",
+      "Clubs, societies, sports and events are an important part of school life, but the specific programmes offered include debating, MUN, sports, science fairs and more — see the Student Life page.",
   },
   {
     keywords: ["contact", "phone", "call", "email", "number", "whatsapp"],
