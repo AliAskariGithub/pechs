@@ -21,13 +21,13 @@ export const Route = createFileRoute("/fees")({
       {
         name: "description",
         content:
-          "Fee structure information for The Academy PECHS, Karachi. Official admission, tuition and annual charges will be published once confirmed by the school.",
+          "Fee structure information for The Academy PECHS, Karachi. Admission, tuition and annual charges for O Level and A Level.",
       },
       { property: "og:title", content: "Fee Structure — The Academy PECHS" },
       {
         property: "og:description",
         content:
-          "Admission, tuition and annual charges for The Academy PECHS, pending confirmation by the school office.",
+          "Admission, tuition and annual charges for The Academy PECHS.",
       },
     ],
   }),
@@ -40,7 +40,7 @@ function Fees() {
       <PageHeader
         eyebrow="Fees"
         title="Fee structure"
-        description="Fee information is published only once it has been confirmed by the school, so that families always see accurate figures."
+        description="Transparent admission, monthly tuition and annual charges for every programme."
       />
 
       <section className="mx-auto max-w-5xl px-4 py-20 sm:px-6">

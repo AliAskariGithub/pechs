@@ -80,8 +80,7 @@ function Contact() {
               />
             </div>
             <p className="mt-4 text-sm text-muted-foreground">
-              The map shows the PECHS area of Karachi. The exact campus pin will be added once the
-              street address is confirmed.
+              Find us in the heart of PECHS, Karachi.
             </p>
           </Reveal>
         </div>

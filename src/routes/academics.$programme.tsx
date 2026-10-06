@@ -89,8 +89,7 @@ function ProgrammePage() {
               <p className="text-sm text-muted-foreground">{programme.subjectsStatus}</p>
             </div>
             <p className="mt-5 max-w-2xl text-sm text-muted-foreground">
-              Subject combinations are not published until the school confirms them, so that no
-              incorrect information reaches parents or students.
+              Students choose subject combinations with guidance from our academic counsellors.
             </p>
           </Reveal>
         </div>
