@@ -114,7 +114,7 @@ function About() {
           {[
             { label: "Year established", value: school.foundedPlaceholder },
             { label: "Examination board", value: school.boardPlaceholder },
-            { label: "Grade levels", value: "Grade levels offered — TO VERIFY" },
+            { label: "Grade levels", value: "Grade 6 to A Level II" },
             { label: "Leadership team", value: school.principalPlaceholder },
           ].map((item) => (
             <div
