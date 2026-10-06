@@ -30,8 +30,8 @@ function Home() {
   return (
     <>
       <section className="overflow-hidden bg-surface">
-        <div className="mx-auto grid min-h-svh max-w-7xl items-center gap-12 px-4 py-14 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20 lg:py-16">
-          <div className="relative z-10 py-4 lg:py-12">
+        <div className="mx-auto grid min-h-[calc(100svh-5rem)] max-w-7xl items-center gap-10 px-4 py-10 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:py-8">
+          <div className="hero-in relative z-10 py-4 lg:py-6">
             <p className="flex items-center gap-4 text-xs font-semibold uppercase tracking-[0.24em] text-gold">
               <span className="h-px w-10 bg-gold" aria-hidden="true" />
               {school.segment}
@@ -46,12 +46,12 @@ function Home() {
             </div>
           </div>
 
-          <div className="relative pb-8 lg:pb-14">
-            <div className="aspect-[4/5] overflow-hidden bg-ocean sm:aspect-[5/4] lg:aspect-[4/5]">
-              <img src={campusHero} alt="Students walking through The Academy PECHS campus" width={1600} height={912} className="size-full object-cover" />
+          <div className="hero-in-delay relative mx-auto w-full max-w-md pb-8 lg:max-w-none lg:pb-10">
+            <div className="aspect-[4/3] max-h-[calc(100svh-11rem)] overflow-hidden bg-ocean lg:aspect-[4/5]">
+              <img src={campusHero} alt="Students walking through The Academy PECHS campus" width={1600} height={912} className="ken-burns size-full object-cover" />
             </div>
-            <div className="absolute -bottom-0 -left-4 h-28 w-36 bg-gold sm:h-40 sm:w-56 lg:-left-10" aria-hidden="true" />
-            <blockquote className="absolute bottom-5 right-0 max-w-[17rem] bg-background p-6 shadow-xl sm:bottom-8 sm:right-6">
+            <div className="float-slow absolute -bottom-0 -left-4 -z-10 h-24 w-32 bg-gold sm:h-32 sm:w-44 lg:-left-10" aria-hidden="true" />
+            <blockquote className="absolute bottom-5 right-0 max-w-[15rem] bg-background p-5 shadow-xl hover-lift sm:bottom-8 sm:right-6">
               <p className="font-display text-xl italic leading-snug text-navy">“Education builds the confidence to meet what comes next.”</p>
             </blockquote>
           </div>
