@@ -30,10 +30,6 @@ export function PageHeader({
   );
 }
 
-export function VerifyBadge({ children }: { children?: React.ReactNode }) {
-  return (
-    <span className="inline-flex items-center gap-1.5 rounded-full border border-gold/50 bg-accent px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-accent-foreground">
-      {children ?? "To verify"}
-    </span>
-  );
+export function VerifyBadge(_props: { children?: React.ReactNode }) {
+  return null;
 }

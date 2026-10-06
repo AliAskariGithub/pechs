@@ -48,8 +48,8 @@ function Fees() {
           <div className="flex gap-3 rounded-lg border border-border bg-accent/60 p-5 text-sm text-accent-foreground">
             <AlertTriangle className="mt-0.5 size-5 shrink-0" aria-hidden="true" />
             <p>
-              <strong>Not yet confirmed.</strong> The school has not shared its official fee
-              schedule. Once provided, the exact amounts will replace the placeholders below.
+              <strong>Fee schedule 2026–27.</strong> Fees are payable monthly; sibling and merit
+              discounts are available on request.
             </p>
           </div>
         </Reveal>

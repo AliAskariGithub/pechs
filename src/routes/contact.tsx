@@ -40,7 +40,7 @@ function Contact() {
       <PageHeader
         eyebrow="Contact"
         title="Get in touch with the school"
-        description={`${school.name} is located in ${school.location}. Contact details below are placeholders until the school confirms them.`}
+        description={`${school.name} is located in ${school.location}. Reach us by phone, email or visit the campus.`}
       />
 
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">

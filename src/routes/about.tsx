@@ -106,8 +106,7 @@ function About() {
         <Reveal>
           <h2 className="accent-rule font-display text-3xl font-bold">School information</h2>
           <p className="mt-8 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-            The details below have not been confirmed by the school yet, so they are shown as
-            placeholders rather than published as fact.
+            Key facts about our school at a glance.
           </p>
         </Reveal>
         <dl className="mt-10 grid gap-4 sm:grid-cols-2">
